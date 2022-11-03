@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PaginationRoutingModule } from './pagination-routing.module';
+import { PrimeNgModule } from '../prime-ng/prime-ng.module';
+
 import { PrimeNgComponent } from './prime-ng/prime-ng.component';
 
 
@@ -11,7 +13,8 @@ import { PrimeNgComponent } from './prime-ng/prime-ng.component';
   ],
   imports: [
     CommonModule,
-    PaginationRoutingModule
+    PaginationRoutingModule,
+    PrimeNgModule
   ]
 })
 export class PaginationModule { }
