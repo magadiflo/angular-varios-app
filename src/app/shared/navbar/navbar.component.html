@@ -8,20 +8,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link active" [routerLink]="['/']">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Dropdown
+                        Subject
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/subject']">Subject</a></li>
                         <li>
-                            <hr class="dropdown-divider">
+                            <a class="dropdown-item" [routerLink]="['/subject', 'behavior-subject']">
+                                Behavior Subject
+                            </a>
                         </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/subject', 'replay-subject']">Replay Subject</a>
+                        </li>
+                        <li><a class="dropdown-item" [routerLink]="['/subject', 'async-subject']">Async Subject</a></li>
                     </ul>
                 </li>
             </ul>
