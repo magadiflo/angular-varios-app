@@ -10,6 +10,10 @@ const routes: Routes = [
     path: 'pagination',
     loadChildren: () => import('./pagination/pagination.module').then(m => m.PaginationModule),
   },
+  {
+    path: 'otros',
+    loadChildren: () => import('./otros/otros.module').then(m => m.OtrosModule),
+  },
 ];
 
 @NgModule({
