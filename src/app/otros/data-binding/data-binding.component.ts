@@ -12,6 +12,8 @@ export class DataBindingComponent implements OnInit {
   deshabilitado: boolean = true;
   imgSrc: string = 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/2048px-Angular_full_color_logo.svg.png';
 
+  texto: string = 'Esto es un video sobre event binding';
+
   constructor() {
     setInterval(() => {
       this.nombre = 'Gaspar';
@@ -24,6 +26,10 @@ export class DataBindingComponent implements OnInit {
 
   sumar(n1: number, n2: number): number {
     return n1 + n2;
+  }
+
+  cambiarTexto(): void {
+    this.texto = 'No se pierdan nuestro póximo video...';
   }
 
 }

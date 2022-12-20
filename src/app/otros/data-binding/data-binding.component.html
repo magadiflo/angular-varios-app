@@ -17,4 +17,12 @@
             <img [src]="imgSrc" alt="Logo angular" width="200">
         </div>
     </div>
+    <div class="row mt-5">
+        <div class="col">
+            <h2 class="border-bottom">Event Binding <code>(</code><code>)</code></h2>
+            <p>Los datos viajan del archivo <b>.html</b> --> <b>.ts</b></p>
+            <button type="button" (click)="cambiarTexto()" class="btn btn-success">Click me</button>
+            <div class="alert alert-info">{{ texto }}</div>
+        </div>
+    </div>
 </div>
