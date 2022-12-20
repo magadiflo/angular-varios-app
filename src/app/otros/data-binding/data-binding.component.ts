@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataBindingComponent implements OnInit {
 
-  constructor() { }
+  nombre: string = 'Martín';
+
+  constructor() {
+    setInterval(() => {
+      this.nombre = 'Gaspar';
+    }, 3000);
+  }
 
   ngOnInit(): void {
+  }
+
+  sumar(n1: number, n2: number): number {
+    return n1 + n2;
   }
 
 }
