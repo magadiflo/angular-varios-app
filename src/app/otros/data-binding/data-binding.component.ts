@@ -14,6 +14,8 @@ export class DataBindingComponent implements OnInit {
 
   texto: string = 'Esto es un video sobre event binding';
 
+  miTexto: string = '';
+
   constructor() {
     setInterval(() => {
       this.nombre = 'Gaspar';
