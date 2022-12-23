@@ -89,10 +89,15 @@
         <div class="mb-3">
             <label for="title" class="form-label">Título</label>
             <input type="text" class="form-control" id="title" formControlName="title">
-            <div class="form-text text-danger">Ingrese el título</div>
+            <div *ngIf="miFormulario.controls['title'].hasError('required')" class="form-text text-danger">
+                Debe ingresar un título
+            </div>
         </div>
         <div class="mb-3">
-            <app-star-rating></app-star-rating>
+            <app-star-rating formControlName="rating"></app-star-rating>
+            <div *ngIf="miFormulario.controls['rating'].hasError('min')" class="form-text text-danger">
+                La calificación mínima es 3
+            </div>
         </div>
         <button type="button" (click)="guardar()" class="btn btn-primary">Guardar</button>
     </form>
