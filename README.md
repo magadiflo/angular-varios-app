@@ -8,3 +8,6 @@ Librerías para poder generar paginación, aquí las que me gustaron
 
 - PrimeNg Table
 - Hay más...
+
+# [Form Control y Control Value Accesor en Angular](https://www.youtube.com/watch?v=UabeWOGqtvM&list=PLy09ETjgu8VqKGRs1UFq3ZiFbY0zzhdLr)
+Tutorial que muestra **cómo usar un componente personalizado como control de formulario** para usarlo con Formularios Reactivos
