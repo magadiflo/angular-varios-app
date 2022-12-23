@@ -1,1 +1,3 @@
-<p>star-rating works!</p>
+<button type="button" (click)="onClick(i + 1)" *ngFor="let rating of ratingArray; let i = index;" aria-label="star">
+    <i [class]="getIcon(i)"></i>
+</button>

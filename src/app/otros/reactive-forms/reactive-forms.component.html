@@ -1,1 +1,99 @@
-<p>reactive-forms works!</p>
+<div class="card mt-3">
+    <div class="card-header">
+        <h5 class="card-title">Componente de Angular como Control Personalizado</h5>
+        <h6 class="card-title">FormControl - ControlValueAccessor</h6>
+    </div>
+    <div class="card-body">
+        <div>
+            <small>
+                Un <b>FormControl</b> creado implícita o explícitamente tiene que <b>interactuar</b>
+                con un control de formulario nativo, <em>por ejemplo, un input, un text-area o un select</em>
+            </small>
+        </div>
+        <div>
+            <small>
+                Ahora, en lugar de un control de formulario nativo (input, text-area, select), también
+                es posible tener un control de <b>formulario personalizado creado como un componente Angular</b>,
+                es decir, cualquier control de formulario personalizado puede interactuar con un FormControl.
+            </small>
+        </div>
+        <hr>
+        <div>
+            <small>
+                Angular necesita un mecanismo genérico para estar entre <b>FormControl</b> y un
+                <b>control de formulario nativo (input, text-area, select) o personalizado (componente de
+                    angular)</b>. Aquí es donde entra en juego el objeto <b>ControlValueAccessor</b>. Este
+                es el objeto que se encuentra entre ambos y sincroniza los valores entre los dos. Es una
+                interface que define 3 métodos obligatorios de implemntar y uno opcional.
+            </small>
+        </div>
+        <h4 class="mt-3 border-bottom">¿Qué es el ControlValueAccessor (CVA)?</h4>
+        <div>
+            <small>
+                ControlValueAccessor es una interfaz, y es lo que se usa para crear accesores de valor para
+                inputs, text-area, radio buttons, selects, etc.. Solo requiere 3 métodos:
+                <ul>
+                    <li><b>writeValue(...)</b>, este método lo usa FormControl para establecer valor en el control de
+                        formulario nativo</li>
+                    <li><b>registerOnChange(...)</b>, este método se utiliza para que FormControl pueda registrar un
+                        callback que se espera se active cada vez
+                        que se actualiza el control de formulario nativo</li>
+                    <li><b>registerOnTouched(...)</b>, este método se utiliza para indicar que un usuario interactuó con
+                        un control.</li>
+                </ul>
+            </small>
+        </div>
+        <h4 class="mt-3 border-bottom">Interacción</h4>
+        <div>
+            <small>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Accessor</th>
+                        <th>Form Element</th>
+                    </tr>
+                    <tr>
+                        <td>DefaultValueAccessor</td>
+                        <td>input, textarea</td>
+                    </tr>
+                    <tr>
+                        <td>CheckboxControlValueAccessor</td>
+                        <td>input[type=checkbox]</td>
+                    </tr>
+                    <tr>
+                        <td>NumberValueAccessor</td>
+                        <td>input[type=number]</td>
+                    </tr>
+                    <tr>
+                        <td>RadioControlValueAccessor</td>
+                        <td>input[type=radio]</td>
+                    </tr>
+                    <tr>
+                        <td>RangeValueAccessor</td>
+                        <td>input[type=range]</td>
+                    </tr>
+                    <tr>
+                        <td>SelectControlValueAccessor</td>
+                        <td>select</td>
+                    </tr>
+                    <tr>
+                        <td>SelectMultipleControlValueAccessor</td>
+                        <td>select[multiple]</td>
+                    </tr>
+                </table>
+            </small>
+        </div>
+    </div>
+</div>
+<div class="mt-5">
+    <form [formGroup]="miFormulario">
+        <div class="mb-3">
+            <label for="title" class="form-label">Título</label>
+            <input type="text" class="form-control" id="title" formControlName="title">
+            <div class="form-text text-danger">Ingrese el título</div>
+        </div>
+        <div class="mb-3">
+            <app-star-rating></app-star-rating>
+        </div>
+        <button type="button" (click)="guardar()" class="btn btn-primary">Guardar</button>
+    </form>
+</div>

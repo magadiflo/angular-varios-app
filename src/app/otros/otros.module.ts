@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { OtrosRoutingModule } from './otros-routing.module';
 import { DataBindingComponent } from './data-binding/data-binding.component';
@@ -18,6 +18,7 @@ import { StarRatingComponent } from './reactive-forms/star-rating/star-rating.co
     CommonModule,
     OtrosRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class OtrosModule { }
