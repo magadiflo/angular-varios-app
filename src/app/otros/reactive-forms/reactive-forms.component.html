@@ -99,6 +99,15 @@
                 La calificación mínima es 3
             </div>
         </div>
+        <hr>
+        <div class="mb-3">
+            <label for="ratingName" class="form-label">Autor</label>
+            <app-rating-name formControlName="ratingName"></app-rating-name>
+            <!--* <div *ngIf="miFormulario.controls['ratingName'].hasError('invalidRatingName')" -->
+            <!--* class="form-text text-danger"> -->
+            <!--* Ingrese los datos requeridos -->
+            <!--* </div> -->
+        </div>
         <button type="button" (click)="guardar()" class="btn btn-primary">Guardar</button>
     </form>
 </div>

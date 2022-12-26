@@ -39,6 +39,7 @@ export class ReactiveFormsComponent {
   miFormulario: FormGroup = new FormGroup({
     title: new FormControl('El señor de los anillos', [Validators.required]),
     rating: new FormControl(3, [Validators.min(3), Validators.max(5)]),
+    ratingName: new FormControl(),
   });
 
   guardar(): void {
