@@ -25,7 +25,13 @@ export class RatingNameComponent implements ControlValueAccessor {
 
   constructor(private _fb: FormBuilder) { }
 
-  writeValue(obj: any): void {
+  //* Cuando se nos envía información, es en este método donde la recepcionamos
+  //* Como observamos el objeto que recibimos por parámetro coincíde con los 
+  //* campos definidos en miFormulario, es decir se tiene el: name y rating,
+  //* así que por eso lo asignamos con el setValue(...) a todo el formulario.
+  //* Si viniera los campos en el objeto con nombre distinto al que se tiene en el formulario
+  //* tendríamos que agregarlos campo por campo
+  writeValue(obj: { name: string, rating: number }): void {
     if (obj) {
       this.miFormulario.setValue(obj);
     }

@@ -39,11 +39,11 @@ export class ReactiveFormsComponent {
   miFormulario: FormGroup = new FormGroup({
     title: new FormControl('El señor de los anillos', [Validators.required]),
     rating: new FormControl(3, [Validators.min(3), Validators.max(5)]),
-    ratingName: new FormControl(),
+    ratingName: new FormControl({ name: 'Martín', rating: 5 }), //* El objeto como parámetro de este FormControl será recepcionado por el writeValue(...) del RatingNameComponent
   });
 
   guardar(): void {
-    console.log('form valid? ', this.miFormulario.valid);   
+    console.log('form valid? ', this.miFormulario.valid);
     console.log(this.miFormulario.value);
     console.log('rating touched? ', this.miFormulario.controls['rating'].touched);
   }
