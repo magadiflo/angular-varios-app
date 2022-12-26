@@ -50,3 +50,11 @@ export class ReactiveFormsComponent {
   }
 
 }
+/**
+ * * En resumen, con el ejemplo de los dos videos hemos visto:
+ * * ---------------------------------------------------------
+ * * 1. Implementación de un Componente personalizado que actuará como FormControl (StarRatingComponent).
+ * * 2. Implementación de un Componente personalizado que internamente tiene un formulario reactivo, y que 
+ * *    todo ese componente (RatingNameComponent) hará de Componente personalizado, como un FormControl, para un
+ * *    formulario reactivo (para un formulario Padre)
+ */
