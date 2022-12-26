@@ -46,6 +46,7 @@ export class ReactiveFormsComponent {
     console.log('form valid? ', this.miFormulario.valid);
     console.log(this.miFormulario.value);
     console.log('rating touched? ', this.miFormulario.controls['rating'].touched);
+    console.log('ratingName errors? ', this.miFormulario.controls['ratingName'].errors);
   }
 
 }

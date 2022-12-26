@@ -23,7 +23,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => StarRatingComponent), //* forwardRef(), nos permite
+      useExisting: forwardRef(() => StarRatingComponent), //* useExisting: para el tema de la Inyec. Dep., para usar la misma instancia y en caso aún no se instancia el componente, que haga referencia a él con el forwardRef(...)
       multi: true //* Por si queremos utilizar más proveedores
     }
   ]
