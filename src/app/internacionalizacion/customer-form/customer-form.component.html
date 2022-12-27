@@ -17,3 +17,8 @@
     </div>
     <button type="button" (click)="guardar()" class="btn btn-primary">{{ 'save' | transloco }}</button>
 </form>
+<br>
+<!--* lang: 'en|static': Le decimos que mantenga esta sección en el idioma que le estamos indicando, que no lo traduzca-->
+<ng-container *transloco="let t; lang: 'en|static'">
+    <h3>{{ t('info') }}</h3>
+</ng-container>
