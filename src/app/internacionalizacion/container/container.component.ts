@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-container',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContainerComponent implements OnInit {
 
-  constructor() { }
+  //* Para obtener el idioma activo usaremos la función ...getActiveLang();
+  lang = this._translocoService.getActiveLang();
+
+  constructor(private _translocoService: TranslocoService) { }
 
   ngOnInit(): void {
+    //* Si queremos saber cada vez que se cambia un idioma debemos de subscribirnos al Observable 'langChanges$""
+    this._translocoService.langChanges$
+      .subscribe(response => this.lang = response);
   }
 
   translate(language: string): void {
