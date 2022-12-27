@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'otros',
     loadChildren: () => import('./otros/otros.module').then(m => m.OtrosModule),
   },
+  {
+    path: 'internacionalizacion',
+    loadChildren: () => import('./internacionalizacion/internacionalizacion.module').then(m => m.InternacionalizacionModule),
+  },
 ];
 
 @NgModule({

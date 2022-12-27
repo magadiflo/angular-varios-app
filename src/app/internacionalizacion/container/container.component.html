@@ -1,0 +1,15 @@
+<div class="row mt-3">
+    <div class="col-12 col-sm-5 col-md-3 p-3">
+        <div class="list-group">
+            <a class="list-group-item list-group-item-action pointer" (click)="translate('es')">Español</a>
+            <a class="list-group-item list-group-item-action pointer" (click)="translate('en')">Inglés</a>
+            <a class="list-group-item list-group-item-action"
+                [routerLink]="['/internacionalizacion', 'customer-form']">Formulario de clientes</a>
+            <a class="list-group-item list-group-item-action"
+                [routerLink]="['/internacionalizacion', 'info-app']">Información de la App</a>
+        </div>
+    </div>
+    <div class="col p-3">
+        <router-outlet></router-outlet>
+    </div>
+</div>
