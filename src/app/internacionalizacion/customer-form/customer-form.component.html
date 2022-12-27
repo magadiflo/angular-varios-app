@@ -1,15 +1,19 @@
+<h1>{{ 'customerRegistration' | transloco }}</h1>
 <form [formGroup]="miFormulario">
     <div class="mb-3">
-        <label for="name" class="form-label">Nombre</label>
+        <label for="name" class="form-label">{{ 'names' | transloco }}</label>
         <input type="text" id="name" formControlName="name" class="form-control">
     </div>
     <div class="mb-3">
-        <label for="lastName" class="form-label">Apellido</label>
+        <label for="lastName" class="form-label">{{ 'lastName' | transloco }}</label>
         <input type="text" id="lastName" formControlName="lastName" class="form-control">
     </div>
     <div class="mb-3">
-        <label for="email" class="form-label">Correo</label>
+        <label for="email" class="form-label">{{ 'enterYourEmail' | transloco }}</label>
         <input type="email" id="email" formControlName="email" class="form-control">
+        <div *ngIf="miFormulario.controls['email'].hasError('email')" class="form-text text-danger">
+            {{ 'errors.invalidEmail' | transloco }}
+        </div>
     </div>
-    <button type="button" (click)="guardar()" class="btn btn-primary">Submit</button>
+    <button type="button" (click)="guardar()" class="btn btn-primary">{{ 'save' | transloco }}</button>
 </form>
