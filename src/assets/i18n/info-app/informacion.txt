@@ -1,0 +1,2 @@
+Este directorio /info-app es para poder descargar los archivos de traducción json de manera perezosa (LazyLoad).
+Un ejemplo vemos en el InfoAppComponent

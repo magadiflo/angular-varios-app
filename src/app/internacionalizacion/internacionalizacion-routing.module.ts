@@ -12,7 +12,7 @@ const routes: Routes = [
     children: [
       { path: 'customer-form', component: CustomerFormComponent, },
       { path: 'info-app', component: InfoAppComponent, },
-      { path: '**', redirectTo: 'info-app' }
+      { path: '**', redirectTo: 'customer-form' }
     ],
   }
 ];
