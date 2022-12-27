@@ -21,6 +21,7 @@ export class ContainerComponent implements OnInit {
 
   translate(language: string): void {
     console.log(language);
+    this._translocoService.setActiveLang(language);
   }
 
 }
