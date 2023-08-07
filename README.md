@@ -36,3 +36,48 @@ UPDATE src/environments/environment.prod.ts (87 bytes)
 UPDATE src/environments/environment.ts (694 bytes)
 UPDATE src/app/app.module.ts (745 bytes)
 ```
+
+---
+
+# Directivas
+
+---
+
+## Directivas de atributo
+
+Crearemos la directiva **imagenRota** para mostrar una imagen por defecto cuando la imagen no se encuentre: 
+
+````typescript
+@Directive({
+  selector: '[imagenRota]'
+})
+export class ImagenRotaDirective {
+
+  constructor(private _el: ElementRef<HTMLImageElement>) { }
+
+  @HostListener('error') loadImageByDefault() {
+    this._el.nativeElement.src = 'assets/no-imagen.png';
+  }
+
+}
+````
+
+Agregamos nuestra directiva como **atributo** de la etiqueta ``<img>``: 
+
+````html
+<img src="https://www.web-no-existe.com/mi-imagen.png" imagenRota alt="Imagen por defecto" class="w-100">
+````
+
+El funcionamiento, como observamos la url de la imagen es una url inválida, la imágen no va a existir, por lo tanto
+en consola observaremos el siguiente error: 
+
+````bash
+GET https://www.web-no-existe.com/mi-imagen.png net::ERR_NAME_NOT_RESOLVED
+````
+Entonces, es allí donde nuestra directiva de atributo **imagenRota** entra en funcionamiento. 
+
+El decorador **@HostListener()**:
+
+> Nos permite capturar eventos que hayan sucedido sobre aquel elemento al que le estemos aplicando la directiva. En nuestro caso, los eventos que sucedan a aquellos elementos html que tengan nuestra directiva **imagenRota**, para ser más exactos, el evento **error** que ocurra sobre los elementos que tengan anotado nuestra directiva **imagenRota**.
+
+Por lo canto, cuando ocurra el evento **error**, el **@HostListener()** lo va a detectar y ejecutar el método **loadImageByDefault()** donde estamos asignandole una imagen por defecto.
