@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'internacionalizacion',
     loadChildren: () => import('./internacionalizacion/internacionalizacion.module').then(m => m.InternacionalizacionModule),
   },
+  {
+    path: 'directivas',
+    loadChildren: () => import('./directivas/directivas.module').then(m => m.DirectivasModule),
+  },
 ];
 
 @NgModule({
