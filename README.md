@@ -206,4 +206,13 @@ export class CustomIfDirective {
 ```html
 <div *customIf="showElement" class="alert alert-success mt-3">Mostrando mensaje</div>
 ```
+
+Por lo tanto: 
+
+> **Todas las directivas estructurales están precedidas por el símbolo Asterisco (*).**
  
+## Directivas de Componente
+
+**Las Directivas de Componente son directivas con un Template.** Los componentes tienen decoradores “@Component”, el componente es un decorador @Directive que es extendido con características propias de los templates.
+
+**Los componentes son directivas con plantillas.** La única diferencia entre los Componentes y los otros dos tipos de directivas es la Plantilla. **Las directivas estructurales y de atributos no tienen plantillas.** Entonces, podemos decir que el Componente es una versión más limpia de la Directiva con una plantilla, que es más fácil de usar.
