@@ -173,3 +173,37 @@ Explicando a detalle la expresión regular **/[^0-9]*/g**:
   - *, este cuantificador indica que el conjunto anterior (cualquier carácter que no sea un dígito) puede aparecer cero o más veces.
 - /, delimitador final de la expresión regular.
 - g, el modificador global, que indica que la búsqueda debe ser global y no detenerse después de encontrar la primera coincidencia en una cadena.
+
+## Directivas estructurales
+
+### Directiva: customIf
+
+Crearemos la directiva estructural **customIf** para mostrar u ocultar un elemento, similar al *ngIf:
+
+````typescript
+@Directive({
+  selector: '[customIf]'
+})
+export class CustomIfDirective {
+
+  constructor(
+    private _templateRef: TemplateRef<HTMLElement>,
+    private _viewContainer: ViewContainerRef) { }
+
+  @Input() set customIf(condition: boolean) {
+    console.log('customIf: ', condition);
+    if (condition) {
+      this._viewContainer.createEmbeddedView(this._templateRef);
+    } else {
+      this._viewContainer.clear();
+    }
+  }
+}
+````
+
+**Como este es una directiva estructural** ya que estamos inyectando, tanto el **TemplateRef como el ViewContainerRef**, es necesario que el elemento al que anotemos con esta directiva lleve el asterisco (*), caso contrario mostrará un error en consola: ``Error: NG0201: No provider for TemplateRef found``. Para ver exactamente cómo usarlo, veamos el ejemplo:
+
+```html
+<div *customIf="showElement" class="alert alert-success mt-3">Mostrando mensaje</div>
+```
+ 

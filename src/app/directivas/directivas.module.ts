@@ -10,6 +10,7 @@ import { ComponentesPageComponent } from './componentes-page/componentes-page.co
 import { ImagenRotaDirective } from './directives/de-atributos/imagen-rota.directive';
 import { HighlightDirective } from './directives/de-atributos/highlight.directive';
 import { NumbersOnlyDirective } from './directives/de-atributos/numbers-only.directive';
+import { CustomIfDirective } from './directives/estructurales/custom-if.directive';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { NumbersOnlyDirective } from './directives/de-atributos/numbers-only.dir
     ImagenRotaDirective,
     HighlightDirective,
     NumbersOnlyDirective,
+    CustomIfDirective,
   ],
   imports: [
     CommonModule,

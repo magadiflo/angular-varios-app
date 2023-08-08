@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EstructuralesPageComponent implements OnInit {
 
+  public showElement: boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {

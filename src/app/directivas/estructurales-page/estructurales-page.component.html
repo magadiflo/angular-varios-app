@@ -1,1 +1,7 @@
-<p>estructurales-page works!</p>
+<div class="card">
+  <div class="card-header">CustomIf Directive</div>
+  <div class="card-body">
+    <button type="button" class="btn btn-primary" (click)="showElement = !showElement">Clic</button>
+    <div *customIf="showElement" class="alert alert-success mt-3">Mostrando mensaje</div>
+  </div>
+</div>
