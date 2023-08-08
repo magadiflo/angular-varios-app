@@ -45,6 +45,8 @@ UPDATE src/app/app.module.ts (745 bytes)
 
 ## Directivas de atributo
 
+### Directiva: imagenRota
+
 Crearemos la directiva **imagenRota** para mostrar una imagen por defecto cuando la imagen no se encuentre: 
 
 ````typescript
@@ -81,3 +83,56 @@ El decorador **@HostListener()**:
 > Nos permite capturar eventos que hayan sucedido sobre aquel elemento al que le estemos aplicando la directiva. En nuestro caso, los eventos que sucedan a aquellos elementos html que tengan nuestra directiva **imagenRota**, para ser más exactos, el evento **error** que ocurra sobre los elementos que tengan anotado nuestra directiva **imagenRota**.
 
 Por lo canto, cuando ocurra el evento **error**, el **@HostListener()** lo va a detectar y ejecutar el método **loadImageByDefault()** donde estamos asignandole una imagen por defecto.
+
+### Directiva: Highlight
+
+Resaltaremos el texto contenido dentro de un elemento html que contenga la directiva **highlight**.
+
+````typescript
+import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
+
+@Directive({
+  selector: '[highlight]'
+})
+export class HighlightDirective {
+
+  constructor(
+    private _el: ElementRef<HTMLElement>,
+    private _render: Renderer2) {
+    console.log(this._el);
+  }
+
+  @HostListener('mouseenter') onMouseEnter(): void {
+    this._highlight('yellow');
+  }
+
+  @HostListener('mouseleave') onMouseLeave(): void {
+    this._highlight('');
+  }
+
+  private _highlight(color: string): void {
+    //* this._el.nativeElement.style.backgroundColor = color;
+    this._render.setStyle(this._el.nativeElement, 'background-color', color);
+  }
+
+}
+````
+- **ElementRef**, es inyectado por Angular. Es el elemento html sobre el cuál es aplicado esta directiva.
+- **Renderer2**, permite **desplegar estilos independientemente de la plataforma donde se visualice.**
+  Una aplicación Angular podemos encontrarlos en muchos sitios: navegador móvil, aplicación escritorio, etc..
+  Para evadir un poco lo que serían las herramientas propias del navegador y poder aplicar los cambios
+  o estilos independientemente de la plataforma con la que estemos trabajando, tenemos una herramienta
+  RENDERED que nos permite hacer lo mismo independientemente de la plataforma.
+- **@HostListener('')**, nos permite capturar eventos que hayan sucedido sobre aquel elemento al que le estemos aplicando la     
+  directiva. En nuestro caso, **los eventos que sucedan a aquellos elementos html que tengan nuestra directiva appHighlight.**
+
+Asignando estilos con Renderer2:
+
+````typescript
+this._el.nativeElement.style.backgroundColor = 'yellow';                      //(1) <--
+this._renderer.setStyle(this._el.nativeElement, 'background-color', 'yellow');//(2) <--
+````
+
+Si observamos el código anterior, tanto **el (1) y el (2) hacen lo mismo**, son formas de agregar estilos css al elemento html que tenga anotado la directiva. La diferencia es que **con el Renderer2, se aplica los estilos independientemente de la plataforma**, mientras que **solo con el ElementRef, sería usando un navegador.**
+
+
