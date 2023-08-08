@@ -135,4 +135,41 @@ this._renderer.setStyle(this._el.nativeElement, 'background-color', 'yellow');//
 
 Si observamos el código anterior, tanto **el (1) y el (2) hacen lo mismo**, son formas de agregar estilos css al elemento html que tenga anotado la directiva. La diferencia es que **con el Renderer2, se aplica los estilos independientemente de la plataforma**, mientras que **solo con el ElementRef, sería usando un navegador.**
 
+### Directiva: NumbersOnly
 
+Crearemos una directiva que solo permitirá el ingreso de números:
+
+````typescript
+@Directive({
+  selector: '[numbersOnly]'
+})
+export class NumbersOnlyDirective {
+
+  constructor(private _el: ElementRef<HTMLInputElement>) { }
+
+  @HostListener('input', ['$event']) onChangeInput(event: Event): void {
+    const charactersThatAreNotNumbers = /[^0-9]*/g
+    const initValue = this._el.nativeElement.value;
+    this._el.nativeElement.value = initValue.replace(charactersThatAreNotNumbers, '');
+    if (initValue !== this._el.nativeElement.value) {
+      event.stopPropagation();
+    }
+  }
+
+}
+````
+- El 'input' dentro del @HostListener(), es el evento que queremos escuchar del elemento que tiene anotado nuestra directiva numbersOnly, en nuestro caso el elemento que tiene anotado dicha directiva es el ``<input type="text" numbersOnly>``. El evento **input** indica cuando el valor de entrada de un elemento cambia.
+- ['$event'], dentro de los [] pasamos como argumento el $event el cual es usado como parámetro en la firma del método, eso significa que, si no pasamos el ['$event'] como segundo argumento al @HostListener, cuando imprimamos la variable event
+este mostrará un undefined. Por lo tanto, es importante pasar ese $event si es que queremos usar datos del evento.
+- **const charactersThatAreNotNumbers = /[^0-9]*/g;**, esto es una expresión regular que coincide con cualquier caracter que no sea un número del 0 al 9. Esto se utiliza para **eliminar todos los caracteres que no sean números del valor de entrada.**
+- **if (initValue !== this._el.nativeElement.value) { event.stopPropagation(); }**, esto compara el valor original con el nuevo valor después de haber eliminado los caracteres no numéricos. Si hubo un cambio en el valor, se detiene la propagación del evento, lo que significa que no se propagará más allá de este punto.
+
+Explicando a detalle la expresión regular **/[^0-9]*/g**:
+
+- /, delimitador inicial de la expresión regular.
+- [^0-9]*, aquí se descompone en más detalle:
+  - [^0-9], el carácter ^ al comienzo de un conjunto de caracteres indica "negación", lo que significa que coincidirá con cualquier carácter que no esté en el rango especificado.
+  - 0-9, este rango incluye todos los dígitos del 0 al 9.
+  - *, este cuantificador indica que el conjunto anterior (cualquier carácter que no sea un dígito) puede aparecer cero o más veces.
+- /, delimitador final de la expresión regular.
+- g, el modificador global, que indica que la búsqueda debe ser global y no detenerse después de encontrar la primera coincidencia en una cadena.

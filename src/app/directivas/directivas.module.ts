@@ -9,6 +9,7 @@ import { EstructuralesPageComponent } from './estructurales-page/estructurales-p
 import { ComponentesPageComponent } from './componentes-page/componentes-page.component';
 import { ImagenRotaDirective } from './directives/de-atributos/imagen-rota.directive';
 import { HighlightDirective } from './directives/de-atributos/highlight.directive';
+import { NumbersOnlyDirective } from './directives/de-atributos/numbers-only.directive';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { HighlightDirective } from './directives/de-atributos/highlight.directiv
     ComponentesPageComponent,
     ImagenRotaDirective,
     HighlightDirective,
+    NumbersOnlyDirective,
   ],
   imports: [
     CommonModule,
